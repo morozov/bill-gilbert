@@ -8,6 +8,7 @@ BORDCR    equ $5C48 ; https://skoolkid.github.io/rom/asm/5C48.html
 UDG       equ $5C7B ; https://skoolkid.github.io/rom/asm/5C7B.html
 ATTR_P    equ $5C8D ; https://skoolkid.github.io/rom/asm/5C8D.html
 MASK_T    equ $5C90
+UDG_ORIG  equ $FF58
 
     LD HL,sprites ;
     LD (UDG),HL   ;
@@ -37,7 +38,7 @@ print_char:
     JR print_char   ;
 
 draw_frame:
-    LD HL,$FF58     ; ???
+    LD HL,UDG_ORIG  ;
     LD (UDG),HL     ;
     LD A,$78        ;
     LD (MASK_T),A   ;
