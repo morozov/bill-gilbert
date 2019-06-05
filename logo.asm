@@ -34,10 +34,8 @@ UDG_ORIG  equ $FF58
     LD (UDG),HL     ;
 
 ; Draw the frame
-    LD A,$78        ;
-    LD (MASK_T),A   ;
-    LD A,$20        ;
-    LD (MASK_T+1),A ;
+    LD BC,$2078     ;
+    LD (MASK_T),BC  ;
     LD BC,$0E36     ;
     CALL PLOT_SUB   ;
     LD BC,$009B     ;
