@@ -52,7 +52,6 @@ UDG_ORIG  equ $FF58
     LD BC,$0B00     ;
     LD DE,$FF00     ;
     CALL DRAW_LINE  ;
-    LD HL,$2758     ;
     EXX             ;
     RET             ;
 
