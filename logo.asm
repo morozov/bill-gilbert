@@ -2,6 +2,7 @@
 
 CLS       equ $0D6B
 CHAN_OPEN equ $1601
+PR_STRING equ $203C
 PLOT_SUB  equ $22E5
 DRAW_LINE equ $24BA
 BORDCR    equ $5C48 ; https://skoolkid.github.io/rom/asm/5C48.html
@@ -22,21 +23,17 @@ UDG_ORIG  equ $FF58
     LD (UDG),HL   ;
 
 ; Print the UDG
-    LD A,$02      ;
-    CALL CHAN_OPEN;
-    LD HL,text    ;
+    LD A,$02           ;
+    CALL CHAN_OPEN     ;
+    LD DE,text         ;
+    LD BC,sprites-text ;
+    CALL PR_STRING     ;
 
-print_char:
-    LD A,(HL)       ;
-    CP $FF          ;
-    JP Z,draw_frame ;
-    RST $10         ;
-    INC HL          ;
-    JR print_char   ;
-
-draw_frame:
+; Restore the original UDG pointer
     LD HL,UDG_ORIG  ;
     LD (UDG),HL     ;
+
+; Draw the frame
     LD A,$78        ;
     LD (MASK_T),A   ;
     LD A,$20        ;
@@ -76,7 +73,6 @@ text:
     DEFB $90,$91,$92,$93,$94,$95,$96,$97
     DEFB $98,$99,$9A,$9B,$9C,$9D,$9E,$9F
     DEFB $A0,$A1,$A2
-    DEFB $FF
 
 sprites:
     DEFB $00,$00,$00,$00,$00,$00,$00,$00
