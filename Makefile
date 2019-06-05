@@ -20,6 +20,7 @@ logo.$$C: logo.000
 	0tohob logo.000
 
 logo.000: logo.bin
+	rm -f logo.000
 	binto0 logo.bin 3 50000
 
 logo.bin: logo.asm
