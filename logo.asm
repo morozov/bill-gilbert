@@ -1,7 +1,7 @@
     org $C350
 
+CLS       equ $0D6B
 CHAN_OPEN equ $1601
-CLEAR_1   equ $1EB7
 PLOT_SUB  equ $22E5
 DRAW_LINE equ $24BA
 BORDCR    equ $5C48 ; https://skoolkid.github.io/rom/asm/5C48.html
@@ -10,21 +10,18 @@ ATTR_P    equ $5C8D ; https://skoolkid.github.io/rom/asm/5C8D.html
 MASK_T    equ $5C90
 UDG_ORIG  equ $FF58
 
-    LD HL,sprites ;
-    LD (UDG),HL   ;
+; Clear the screen
     XOR A         ;
     LD (ATTR_P),A ;
     LD (BORDCR),A ;
-    HALT          ;
-
-    LD BC,$61A7   ; ???
-    LD HL,$1303   ; ???
-    PUSH HL       ;
-    CALL CLEAR_1  ;
-    LD HL,$1B76   ; ???
-    PUSH HL       ;
-    XOR A         ;
     OUT ($FE),A   ;
+    CALL CLS      ;
+
+; Point to the UDG
+    LD HL,sprites ;
+    LD (UDG),HL   ;
+
+; Print the UDG
     LD A,$02      ;
     CALL CHAN_OPEN;
     LD HL,text    ;
