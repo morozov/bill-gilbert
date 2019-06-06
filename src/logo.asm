@@ -1,4 +1,6 @@
-    org $F800
+INCLUDE src/header.inc
+
+    org ADDR
 
 CLS       equ $0D6B
 CHAN_OPEN equ $1601
