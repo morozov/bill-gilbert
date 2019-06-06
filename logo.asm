@@ -1,4 +1,4 @@
-    org $C350
+    org $F800
 
 CLS       equ $0D6B
 CHAN_OPEN equ $1601

@@ -21,7 +21,7 @@ logo.$$C: logo.000
 
 logo.000: logo.bin
 	rm -f logo.000
-	binto0 logo.bin 3 50000
+	binto0 logo.bin 3 63488
 
 logo.bin: logo.asm
 	pasmo --bin logo.asm logo.bin
