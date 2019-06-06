@@ -19,12 +19,11 @@ boot.tap: boot.bas
 logo.$$C: logo.000
 	0tohob logo.000
 
-logo.000: logo.bin
-	rm -f logo.000
-	binto0 logo.bin 3 63488
+logo.000: logo.tap
+	tapto0 -f logo.tap
 
-logo.bin: logo.asm
-	pasmo --bin logo.asm logo.bin
+logo.tap: logo.asm
+	pasmo --tap --name logo logo.asm logo.tap
 
 clean:
 	rm -f \
