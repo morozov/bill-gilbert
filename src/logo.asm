@@ -2,15 +2,15 @@ INCLUDE src/header.inc
 
     org ADDR
 
-CLS       equ $0D6B
-CHAN_OPEN equ $1601
-PR_STRING equ $203C
-PLOT_SUB  equ $22E5
-DRAW_LINE equ $24BA
+CLS       equ $0D6B ; https://skoolkid.github.io/rom/asm/0D6B.html
+CHAN_OPEN equ $1601 ; https://skoolkid.github.io/rom/asm/1601.html
+PR_STRING equ $203C ; https://skoolkid.github.io/rom/asm/1FFC.html#203C
+PLOT_SUB  equ $22E5 ; https://skoolkid.github.io/rom/asm/22DC.html#22E5
+DRAW_LINE equ $24BA ; https://skoolkid.github.io/rom/asm/24B7.html#24BA
 BORDCR    equ $5C48 ; https://skoolkid.github.io/rom/asm/5C48.html
 UDG       equ $5C7B ; https://skoolkid.github.io/rom/asm/5C7B.html
 ATTR_P    equ $5C8D ; https://skoolkid.github.io/rom/asm/5C8D.html
-MASK_T    equ $5C90
+MASK_T    equ $5C90 ; https://skoolkid.github.io/rom/asm/5C90.html
 UDG_ORIG  equ $FF58
 
 ; Clear the screen
