@@ -14,46 +14,46 @@ MASK_T    equ $5C90
 UDG_ORIG  equ $FF58
 
 ; Clear the screen
-    XOR A         ;
-    LD (ATTR_P),A ;
-    LD (BORDCR),A ;
-    OUT ($FE),A   ;
-    CALL CLS      ;
+    XOR A
+    LD (ATTR_P),A
+    LD (BORDCR),A
+    OUT ($FE),A
+    CALL CLS
 
 ; Point to the UDG
-    LD HL,sprites ;
-    LD (UDG),HL   ;
+    LD HL,sprites
+    LD (UDG),HL
 
 ; Print the UDG
-    LD A,$02           ;
-    CALL CHAN_OPEN     ;
-    LD DE,text         ;
-    LD BC,sprites-text ;
-    CALL PR_STRING     ;
+    LD A,$02
+    CALL CHAN_OPEN
+    LD DE,text
+    LD BC,sprites-text
+    CALL PR_STRING
 
 ; Restore the original UDG pointer
-    LD HL,UDG_ORIG  ;
-    LD (UDG),HL     ;
+    LD HL,UDG_ORIG
+    LD (UDG),HL
 
 ; Draw the frame
-    LD BC,$2078     ;
-    LD (MASK_T),BC  ;
-    LD BC,$0E36     ;
-    CALL PLOT_SUB   ;
-    LD BC,$009B     ;
-    LD DE,$0001     ;
-    CALL DRAW_LINE  ;
-    LD BC,$0B00     ;
-    LD DE,$0100     ;
-    CALL DRAW_LINE  ;
-    LD BC,$009B     ;
-    LD DE,$00FF     ;
-    CALL DRAW_LINE  ;
-    LD BC,$0B00     ;
-    LD DE,$FF00     ;
-    CALL DRAW_LINE  ;
-    EXX             ;
-    RET             ;
+    LD BC,$2078
+    LD (MASK_T),BC
+    LD BC,$0E36
+    CALL PLOT_SUB
+    LD BC,$009B
+    LD DE,$0001
+    CALL DRAW_LINE
+    LD BC,$0B00
+    LD DE,$0100
+    CALL DRAW_LINE
+    LD BC,$009B
+    LD DE,$00FF
+    CALL DRAW_LINE
+    LD BC,$0B00
+    LD DE,$FF00
+    CALL DRAW_LINE
+    EXX
+    RET
 
 text:
     DEFB $16,$13,$07 ; AT 19,7
